@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff4d00" />
+  <title>UniLink Wallet Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="phone" aria-label="UniLink app prototype">
+    <header class="statusbar">
+      <span id="clock">9:41</span>
+      <div class="status-icons" aria-hidden="true">
+        <span>▮▮▮▮</span><span>⌁</span><span>▰</span>
+      </div>
+    </header>
+
+    <section id="home" class="screen active">
+      <div class="home-head">
+        <div><p>Good morning,</p><h1>XXX 👋</h1></div>
+        <button class="icon-btn" data-toast="No new notifications" aria-label="Notifications">♧</button>
+      </div>
+
+      <article class="balance-card">
+        <div class="balance-copy">
+          <div class="balance-label">Valet Balance <button id="toggleBalance" class="plain" aria-label="Show or hide balance">◉</button></div>
+          <div class="balance" id="balanceText">₹ 2,450.75</div>
+          <button class="primary" data-page="add-money"><span>＋</span> Add Money</button>
+        </div>
+        <img src="assets/mascot.png" class="mascot" alt="Orange UniLink robot mascot" />
+      </article>
+
+      <h2>Quick Actions</h2>
+      <div class="quick-grid">
+        <button class="quick" data-toast="Ready to tap your ID card"><span>)))</span>Tap to Pay</button>
+        <button class="quick" data-page="add-money"><span>＋</span>Add Money</button>
+        <button class="quick" data-page="rewards"><span>♙</span>Rewards</button>
+        <button class="quick" data-toast="Referral link copied"><span>♧</span>Refer & Earn</button>
+      </div>
+
+      <div class="section-title">
+        <h2>Recent Transactions</h2>
+        <button class="link" data-page="history">View All</button>
+      </div>
+      <div class="transaction-card" id="recentTransactions"></div>
+    </section>
+
+    <section id="add-money" class="screen">
+      <div class="page-title"><button class="back" data-page="home">‹</button><h1>Add Money</h1></div>
+      <h2>Select Amount</h2>
+      <div class="amount-grid" id="amountGrid">
+        <button data-amount="500">₹500</button>
+        <button class="selected" data-amount="1000">₹1,000</button>
+        <button data-amount="2000">₹2,000</button>
+        <button data-amount="3000">₹3,000</button>
+        <button data-amount="5000">₹5,000</button>
+        <button data-amount="other">Other</button>
+      </div>
+
+      <h2>Or Enter Amount</h2>
+      <label class="amount-input"><span>₹</span><input id="customAmount" type="number" min="1" value="1000" /></label>
+
+      <h2>Payment Method</h2>
+      <div class="method-list" id="methodList">
+        <button class="selected" data-method="UPI"><span>◁</span><b>UPI</b><i>›</i></button>
+        <button data-method="Debit / Credit Card"><span>▣</span><b>Debit / Credit Card</b><i>›</i></button>
+        <button data-method="Net Banking"><span>▥</span><b>Net Banking</b><i>›</i></button>
+      </div>
+      <button id="payButton" class="primary wide">Proceed to Pay</button>
+    </section>
+
+    <section id="rewards" class="screen">
+      <div class="page-title"><button class="back" data-page="home">‹</button><h1>Rewards</h1></div>
+      <div class="points-card">
+        <span>Your Points</span>
+        <strong>🏆 <b id="pointsText">1,250</b></strong>
+        <i>★</i>
+      </div>
+      <div class="tabs">
+        <button class="active" data-reward-tab="all">All</button>
+        <button data-reward-tab="available">Available</button>
+        <button data-reward-tab="claimed">Claimed</button>
+      </div>
+      <div id="rewardList" class="reward-list"></div>
+      <button id="moreRewards" class="more">View More Rewards⌄</button>
+    </section>
+
+    <section id="history" class="screen">
+      <div class="page-title"><button class="back" data-page="home">‹</button><h1>Transaction History</h1></div>
+      <div class="history-filter">
+        <button class="active">All</button><button>Payments</button><button>Top-ups</button>
+      </div>
+      <div class="transaction-card full" id="allTransactions"></div>
+    </section>
+
+    <section id="settings" class="screen">
+      <div class="page-title"><button class="back" data-page="home">‹</button><h1>Profile & Settings</h1></div>
+
+      <button class="profile-card" data-toast="Profile opened">
+        <img src="assets/avatar.png" alt="UniLink robot avatar" />
+        <span><b>XXX XXX</b><small>xxx@unilink.in</small></span><i>›</i>
+      </button>
+
+      <h2>Account</h2>
+      <div class="settings-card">
+        <button data-toast="Personal details opened">♙ <span>Personal Details</span><i>›</i></button>
+        <button data-toast="Linked card and bank opened">▣ <span>Linked Card / Bank</span><i>›</i></button>
+        <button data-toast="Transaction limits opened">⚙ <span>Transaction Limits</span><i>›</i></button>
+      </div>
+
+      <h2>Preferences</h2>
+      <div class="settings-card">
+        <div class="setting-row">♧ <span>Notifications</span><label class="switch"><input id="notificationToggle" type="checkbox" checked><i></i></label></div>
+        <div class="setting-row">◐ <span>Dark Mode</span><label class="switch"><input id="darkToggle" type="checkbox"><i></i></label></div>
+        <button id="languageButton">◎ <span>App Language</span><small>English</small><i>›</i></button>
+      </div>
+
+      <h2>About</h2>
+      <div class="settings-card">
+        <button data-toast="Help centre opened">? <span>Help & Support</span><i>›</i></button>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="active" data-page="home"><span>⌂</span>Home</button>
+      <button data-page="history"><span>▣</span>History</button>
+      <button data-page="rewards"><span>♙</span>Rewards</button>
+      <button data-page="settings"><span>⚙</span>Settings</button>
+    </nav>
+
+    <div id="modal" class="modal" aria-hidden="true">
+      <div class="modal-box">
+        <h3 id="modalTitle">Payment successful</h3>
+        <p id="modalText"></p>
+        <button id="modalClose" class="primary wide">Done</button>
+      </div>
+    </div>
+    <div id="toast" class="toast"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
