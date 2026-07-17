@@ -1,4 +1,7 @@
 UNILINK HTML PROTOTYPE
+link: https://vardhin.github.io/unilink_html/
+QR code: unilink-qr.png (opens the live link above)
+
 
 How to run:
 1. Extract the ZIP file.
@@ -23,3 +26,4 @@ Files:
 - script.js
 - assets/mascot.png
 - assets/avatar.png
+- unilink-qr.png
